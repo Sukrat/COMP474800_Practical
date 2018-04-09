@@ -1,6 +1,6 @@
 
 public class Demeter {
-	static final String CURRENCY_SYMBOL = "€";
+	static final String CURRENCY_SYMBOL = "Euro";
 
 	public static void main(String[] args) {
 		ShopKeeper john = new ShopKeeper();
@@ -24,6 +24,14 @@ class Customer {
 
 	public Wallet getWallet() {
 		return myWallet;
+	}
+
+	public boolean hasEnoughAmount(float amount) {
+		return myWallet.getTotalMoney() > amount;
+	}
+
+	public void spend(float amount) {
+		myWallet.subtractMoney(amount);
 	}
 
 	private String name;
@@ -53,9 +61,8 @@ class Wallet {
 class ShopKeeper {
 	// ...
 	public void chargeCustomer(Customer cust, float amount) {
-		Wallet wallet = cust.getWallet();
-		if (wallet.getTotalMoney() > amount) {
-			wallet.subtractMoney(amount);
+		if (cust.hasEnoughAmount(amount)) {
+			cust.spend(amount);
 		} else {
 			// get the baseball bat...
 		}
