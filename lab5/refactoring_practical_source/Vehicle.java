@@ -1,27 +1,17 @@
 
-public class Vehicle {
+public abstract class Vehicle {
 
-  public Vehicle(String model, int vehicleType) {
-    _model = model;
-    _vehicleType = vehicleType;
-  }
+	private String _model;
 
-  public int getVehicleType() {
-    return _vehicleType;
-  }
+	public Vehicle(String model) {
+		_model = model;
+	}
 
-  public void setVehicleType(int arg) {
-    _vehicleType = arg;
-  }
+	public String getTitle() {
+		return _model;
+	}
 
-  public String getTitle() {
-    return _model;
-  }
+	public abstract double priceForRental(int daysRented);
 
-  public static final int MOTORBIKE = 2;
-  public static final int ALL_TERRAIN = 1;
-  public static final int CAR = 0;
-
-  private String _model;
-  private int _vehicleType;
+	public abstract int getFrequentRenterPoints(int daysRented);
 }

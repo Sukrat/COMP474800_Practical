@@ -3,61 +3,64 @@ import java.util.List;
 
 public class Customer {
 
-  public Customer(String name) {
-    _name = name;
-  }
+	private String _name;
+	private List<Rental> _rentals = new ArrayList<Rental>();
 
-  public void addRental(Rental arg) {
-    _rentals.add(arg);
-  }
+	public Customer(String name) {
+		_name = name;
+	}
 
-  public String getName() {
-    return _name;
-  }
+	public void addRental(Rental arg) {
+		_rentals.add(arg);
+	}
 
-  public String statement() {
-    double totalAmount = 0;
-    int frequentRenterPoints = 0;
-    String result = "Rental Record for " + getName() + "\n";
+	public String getName() {
+		return _name;
+	}
 
-    for (Rental each: _rentals) {
-      double thisAmount = 0;
+	public String statement() {
+		String result = "Rental Record for " + getName() + "\n";
 
-      // determine amounts for each line
-      switch (each.getVehicle().getVehicleType()) {
-      case Vehicle.CAR:
-        thisAmount += 2;
-        if (each.getDaysRented() > 2)
-          thisAmount += (each.getDaysRented() - 2) * 1.5;
-        break;
-      case Vehicle.ALL_TERRAIN:
-        thisAmount += each.getDaysRented() * 3;
-        break;
-      case Vehicle.MOTORBIKE:
-        thisAmount += 1.5;
-        if (each.getDaysRented() > 3)
-          thisAmount += (each.getDaysRented() - 3) * 1.5;
-        break;
-      }
+		for (Rental each : _rentals) {
+			result += "\t" + each.getVehicle().getTitle() + "\t" + String.valueOf(each.priceForRental()) + "\n";
+		}
 
-      // add frequent renter points
-      frequentRenterPoints++;
-      // add bonus for a two day all terrain rental
-      if ((each.getVehicle().getVehicleType() == Vehicle.ALL_TERRAIN) && each.getDaysRented() > 1)
-        frequentRenterPoints++;
+		// add footer lines
+		result += "Amount owed is " + String.valueOf(getTotalRentalPrice()) + "\n";
+		result += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points";
 
-      // show figures for this rental
-      result += "\t" + each.getVehicle().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
-      totalAmount += thisAmount;
-    }
+		return result;
+	}
 
-    // add footer lines
-    result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-    result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+	public String htmlStatement() {
+		String result = "<h1>Rental Record for " + getName() + "</h1>\n";
 
-    return result;
-  }
+		result += "<ul>";
+		for (Rental each : _rentals) {
+			result += "<li>" + each.getVehicle().getTitle() + ": " + String.valueOf(each.priceForRental()) + "</li>\n";
+		}
+		result += "</ul>";
 
-  private String _name;
-  private List<Rental> _rentals = new ArrayList<Rental>();
+		// add footer lines
+		result += "<p>Amount owed is " + String.valueOf(getTotalRentalPrice()) + "</p>\n";
+		result += "<p>You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points</p>";
+
+		return result;
+	}
+
+	private double getTotalRentalPrice() {
+		double totalAmount = 0;
+		for (Rental aRental : _rentals) {
+			totalAmount += aRental.priceForRental();
+		}
+		return totalAmount;
+	}
+
+	private int getTotalFrequentRenterPoints() {
+		int frequentRenterPoints = 0;
+		for (Rental aRental : _rentals) {
+			frequentRenterPoints += aRental.getFrequentRenterPoints();
+		}
+		return frequentRenterPoints;
+	}
 }
