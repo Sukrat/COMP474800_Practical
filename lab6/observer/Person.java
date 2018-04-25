@@ -1,7 +1,9 @@
+import static java.lang.String.format;
 
 public class Person implements Observer {
 
     private String name;
+    private String alarmTime;
 
     public Person(String a_name) {
         name = a_name;
@@ -17,11 +19,14 @@ public class Person implements Observer {
 
     @Override
     public void update(Subject o, Object args) {
-        if (o instanceof AlarmClock) {
+        if (o instanceof AlarmClock && args instanceof String) {
             AlarmClock alarmClock = (AlarmClock) o;
-            if (alarmClock.alarmReached()) {
+            if (args.equals("tick") && alarmClock.alarmReached()) {
                 System.out.println("Time is: " + alarmClock.getTime());
                 wakeUp();
+            } else if (args.equals("setAlarmTime")) {
+                alarmTime = alarmClock.getAlarmTime();
+                System.out.println(format("Alarm time set for %s is: %s", name, alarmTime));
             }
         }
     }

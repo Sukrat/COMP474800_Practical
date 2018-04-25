@@ -5,7 +5,6 @@ public class AlarmApplication {
 
     public static void main(String[] args) {
         AlarmClock alarmClock = new AlarmClock();
-        alarmClock.setAlarmTime(7, 30, 0);
 
         Person jack = new Person("Jack");
         jack.goToBed();
@@ -28,6 +27,8 @@ public class AlarmApplication {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        alarmClock.setAlarmTime(7, 30, 0);
         for (int i = 1; i <= SECONDS_IN_DAY; i++) {
             alarmClock.tick();
         }

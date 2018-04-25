@@ -23,6 +23,7 @@ public class AlarmClock extends Subject {
         alarmHours = hrs;
         alarmMinutes = mins;
         alarmSeconds = secs;
+        notifyObservers("setAlarmTime");
     }
 
     public void tick() {
@@ -35,12 +36,16 @@ public class AlarmClock extends Subject {
                 }
             }
         }
-        // System.out.println("The time is: " + getTime());
-        notifyObservers();
+        notifyObservers("tick");
     }
 
     public String getTime() {
         return Integer.toString(hours) + ":" + Integer.toString(minutes) + ":" + Integer.toString(seconds);
+    }
+
+    public String getAlarmTime() {
+        return Integer.toString(alarmHours) + ":" + Integer.toString(alarmMinutes) + ":"
+                + Integer.toString(alarmSeconds);
     }
 
     public boolean alarmReached() {
