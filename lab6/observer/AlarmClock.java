@@ -1,5 +1,8 @@
 
-public class AlarmClock {
+public class AlarmClock extends Subject {
+
+    private int hours, minutes, seconds;
+    private int alarmHours, alarmMinutes, alarmSeconds;
 
     public AlarmClock() {
         hours = 0;
@@ -32,6 +35,8 @@ public class AlarmClock {
                 }
             }
         }
+        // System.out.println("The time is: " + getTime());
+        notifyObservers();
     }
 
     public String getTime() {
@@ -42,6 +47,7 @@ public class AlarmClock {
         return (hours == alarmHours && minutes == alarmMinutes && seconds == alarmSeconds);
     }
 
-    private int hours, minutes, seconds;
-    private int alarmHours, alarmMinutes, alarmSeconds;
+    public boolean timeIs(int h, int m, int s) {
+        return (hours == h && minutes == m && seconds == s);
+    }
 }

@@ -1,5 +1,7 @@
 
-public class Person {
+public class Person implements Observer {
+
+    private String name;
 
     public Person(String a_name) {
         name = a_name;
@@ -13,5 +15,14 @@ public class Person {
         System.out.println(name + " has woken up!");
     }
 
-    private String name;
+    @Override
+    public void update(Subject o, Object args) {
+        if (o instanceof AlarmClock) {
+            AlarmClock alarmClock = (AlarmClock) o;
+            if (alarmClock.alarmReached()) {
+                System.out.println("Time is: " + alarmClock.getTime());
+                wakeUp();
+            }
+        }
+    }
 }
