@@ -1,13 +1,51 @@
-\documentclass[12pt]{article}
-    \usepackage[utf8]{inputenc}
-     
-    \title{Final Report}
-    \author{Sukrat Kashyap (14200092)}
-    \date{February 2014}
-     
+\documentclass[]{UCD_CS_FYP_Report}
+	\usepackage{graphicx}
+	\usepackage{hyperref}
+	\usepackage{cite}
+	\usepackage{float}
+	\usepackage{amsthm,amssymb}
+	\usepackage{amsmath}
+	\usepackage{algorithm}
+	\usepackage[noend]{algpseudocode}
+	
+	%%%%%%%%%%%%%%%%%%%%%%
+	%%% Input project details
+
+	\def\studentname{Sukrat Kashyap (14200092)} % Edit with your name
+	\def\projecttitle{Lab Journal} % Edit with you project title
+	\def\supervisorname{Ravindranath Reddy Manumachu}
+
 \begin{document}
 \maketitle
 
+\tableofcontents\pdfbookmark[0]{Table of Contents}{toc}\newpage
+\newpage
 
+\chapter{Extreme Programming}
+\input{final-report/lab1}
+
+\chapter{Modelling with UML}
+\input{final-report/lab2}
+
+\chapter{Test-Driven Development}
+\input{final-report/lab3}
+
+\chapter{Object-Oriented Principles}
+\input{final-report/lab4}
+
+\chapter{Refactoring}
+\input{final-report/lab5}
+
+\chapter{Design Patterns}
+\input{final-report/lab6}
+
+\chapter{Company Seminar Series}
+\input{final-report/seminar}
+
+%%%% ADD YOUR BIBLIOGRAPHY HERE
+\newpage
+
+\bibliography{references}
+\bibliographystyle{plain}\label{endpage}
 
 \end{document}
