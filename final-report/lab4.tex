@@ -1,14 +1,16 @@
+This practical involved understanding and applying object-oriented principles. These principles are applied mainly to Object-oriented programming. Java was used in the practical. But language is immaterial to the principles.
+
 \section{Work Done}
 
 The first task was to find the violation of the open-closed principle of PostageStamp and Square Stamp such that PostageStamp is closed for client change which is the Square and open for extensions. The violation found in the OCP.java was that the PostageStamp was tightly coupled with the Square class. This tight coupling closed the PostageStamp class for further extensions as changing the shape of stamp requires changing the PostageStamp class itself. To fix the issue, an interface named Shape is created which becomes the argument and shape of stamp for the PostageStamp. Now, other classes which can act as a shape to the PostageStamp class must implement the shape interface and can be passed without changing the PostageStamp and is extensible.
 
-The second task requires finding the violation of Single responsibility principle. We know that the Hexapod is actually a dog and a human. Hence, we created two classes namely Dog and Human which dealt with task related to themselves only. These two objects were then created and combined by the Hexapod.
+The second task requires finding the violation of Single responsibility principle. We know that the Hexapod is actually a dog and a human. Hence, we created two classes namely Dog and Human which dealt with task related to themselves only. These two objects were then created and combined by the Hexapod. Hexapod could be removed from the project itself. But was chosen to keep because the requirement doesn't want us to fix the code. The principles are what we were looking at. Since Hexapod could be thought of as a requirement. We decided to keep the Hexapod and just put the responsibilities to their respective class and use it in the Hexapod.
 
-The third task, wanted us to find and correct the violation of the law of Demeter. We found that Customer was depended on Wallet. The Shopkeeper was depended on the Customer. But the Shopkeeper was accessing the Wallet class on which it was not directly dependent and hence violating the law of Demeter. To fix the issue, 2 new methods corresponding to the usage in Shopkeeper class were created in Customer and used in Shopkeeper class making dependency of Shopkeeper only up till Customer.
+The third task, wanted us to find and correct the violation of the law of Demeter. We found that Customer was depended on Wallet. The Shopkeeper was depended on the Customer. But the Shopkeeper was accessing the Wallet class on which it was not directly dependent and hence violating the law of Demeter. To fix the issue, 2 new methods corresponding to the usage in Shopkeeper class were created in Customer and used in Shopkeeper class making dependency of Shopkeeper only up till Customer. The Shopkeeper was also checking whether the customer has the money or not. But by the single responsibility principle shopkeeper should not care about checking the money, it should rather just ask for the total money.
 
 \section{Reflections}
 
-The co-author of the Agile Manifesto Robert Cecil Martin is the promoter of SOLID design principles. SOLID is mnemonic for five design principles for object-oriented programming. It is intended to make software designs more understandable, flexible and maintainable.
+The co-author of the Agile Manifesto Robert Cecil Martin is the promoter of SOLID design principles~\cite{martin2002agile}. SOLID is mnemonic for five design principles for object-oriented programming. It is intended to make software designs more understandable, flexible and maintainable.
 
 The five design principles are as follows:
 
