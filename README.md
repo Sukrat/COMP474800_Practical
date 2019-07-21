@@ -20,13 +20,13 @@ We also had 3 seminars given by `IBM`, `Facebook` and `FoodCloud`. In the semina
 
 ## Seminars
 
-1. [IBM](./seminar1\report.pdf)
+1. [IBM](./seminar1/report.pdf)
 
-1. [Facebook](./seminar2\report.pdf)
+1. [Facebook](./seminar2/report.pdf)
 
-1. [FoodCloud](./seminar3\report.pdf)
+1. [FoodCloud](./seminar3/report.pdf)
 
-#### [Summary of all the above](./final-report\final-report.pdf)
+#### [Summary of all the above](./final-report/final-report.pdf)
 
 
 ### Side Notes
