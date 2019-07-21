@@ -1,4 +1,4 @@
-# COMP474800 Practical
+# UCD COMP474800 Practical
 
 In UCD, the college where I did my Bachelor's. We had a Module where we had 6 Labs on various topics on Clean Code. 
 
